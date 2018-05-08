@@ -8,7 +8,7 @@ class App extends Component {
 	constructor(props){
 		super(props);
 		this.state = {
-			appearance: 'full'
+			appearance: 'center'
 		}
 		this.changeAppearance = this.changeAppearance.bind(this);
 	}
@@ -24,9 +24,9 @@ class App extends Component {
 				<div className="Button__group">
 					<Button appearance="center" changer={(e) => this.changeAppearance('center', e)}></Button>
 					<Button appearance="splash" changer={(e) => this.changeAppearance('splash', e)}></Button>
-					<Button appearance="full" changer={(e) => this.changeAppearance('full', e)}></Button>
-					<Button appearance="passive" changer={(e) => this.changeAppearance('passive', e)}></Button>
-					<Button appearance="notify" changer={(e) => this.changeAppearance('notify', e)}></Button>
+					<Button appearance="full" changer={(e) => this.changeAppearance('full', e)} disabled="true"></Button>
+					<Button appearance="passive" changer={(e) => this.changeAppearance('passive', e)} disabled="true"></Button>
+					<Button appearance="notify" changer={(e) => this.changeAppearance('notify', e)} disabled="true"></Button>
 				</div>
 				<Anna appearance={this.state.appearance}></Anna>
         {
