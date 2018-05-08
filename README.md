@@ -1,4 +1,6 @@
 # morphing_bubbles
 Morphing SVG bubbles
 
-`npm install` then `yarn start`
+`yarn install` then `yarn start`
+
+`yarn run build` for production
