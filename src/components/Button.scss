@@ -1,0 +1,13 @@
+.Button__group{
+  text-align: center;
+  button{
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background: white;
+    border: 0;
+    border-radius: 4px;
+    margin: 5px;
+    outline: none;
+    cursor: pointer;
+  }
+}
