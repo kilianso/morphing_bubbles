@@ -12,11 +12,13 @@ class App extends Component {
 		}
 		this.changeAppearance = this.changeAppearance.bind(this);
 	}
+
 	changeAppearance(value) {
 		this.setState({
 			appearance: value
 		})
 	}
+	
   render() {
 		const appearance = ['center', 'splash', 'full', 'passive', 'notify', 'embed'];
     return (
