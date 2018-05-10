@@ -19,11 +19,11 @@ $animation_3_loop: 13.5s ease-in-out 1.11s alternate infinite;
 /*----------- ANIMATIONS ----------- */
 
 .yellow__bubble path, .red__bubble path {
-  animation: rotateClockwise 60s infinite;
+  animation: rotateClockwise 90s infinite;
 	transform-origin: center center;
 }
 .blue__bubble path{
-  animation: rotateCounterClockwise 60s infinite;
+  animation: rotateCounterClockwise 90s infinite;
 	transform-origin: center center;
 }
 

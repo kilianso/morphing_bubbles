@@ -30,23 +30,23 @@ class Anna extends Component {
 
 		function sequence1(){
 			sequencer(yellow__path,yellow__vectors[0],4000, sequence2);
-			sequencer(red__path,red__vectors[0],4000, sequence2, 1000);
-			sequencer(blue__path,blue__vectors[0],4000, sequence2,2000);
+			sequencer(red__path,red__vectors[0],5000, sequence2, 1000);
+			sequencer(blue__path,blue__vectors[0],6000, sequence2,2000);
 		}
 		function sequence2(){
 			sequencer(yellow__path,yellow__vectors[1],4000, sequence3);
-			sequencer(red__path,red__vectors[1],4000, sequence3);
-			sequencer(blue__path,blue__vectors[1],4000, sequence3);
+			sequencer(red__path,red__vectors[1],5000, sequence3,1000);
+			sequencer(blue__path,blue__vectors[1],6000, sequence3,2000);
 		}
 		function sequence3(){
 			sequencer(yellow__path,yellow__vectors[2],4000, sequence4);
-			sequencer(red__path,red__vectors[2],4000, sequence4);
-			sequencer(blue__path,blue__vectors[2],4000, sequence4);
+			sequencer(red__path,red__vectors[2],5000, sequence4,1000);
+			sequencer(blue__path,blue__vectors[2],6000, sequence4,2000);
 		}
 		function sequence4(){
 			sequencer(yellow__path,yellow__vectors[3],4000, sequence1);
-			sequencer(red__path,red__vectors[3],4000, sequence1);
-			sequencer(blue__path,blue__vectors[3],4000, sequence1);
+			sequencer(red__path,red__vectors[3],5000, sequence1,1000);
+			sequencer(blue__path,blue__vectors[3],6000, sequence1,2000);
 		}
 
 		function sequencer(el, vectors, duration, next, delay=0){
