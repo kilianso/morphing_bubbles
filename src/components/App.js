@@ -18,14 +18,21 @@ class App extends Component {
 			appearance: value
 		})
 	}
-	
+
   render() {
-		const appearance = ['center', 'splash', 'full', 'passive', 'notify', 'embed'];
+		const appearance = [
+			{name:'center', disabled: false},
+			{name:'splash', disabled: false},
+			{name:'full', disabled: false},
+			{name: 'passive', disabled: true},
+			{name:'notify', disabled: true},
+			{name: 'embed', disabled: true}
+		];
     return (
       <div className="App">
 				<div className="Button__group">
 					{appearance.map(x=>
-						<Button key={x} appearance={x} changer={(e) => this.changeAppearance(x, e)}></Button>
+						<Button key={x.name} appearance={x.name} disabled={x.disabled} changer={(e) => this.changeAppearance(x.name, e)}></Button>
 					)}
 				</div>
 				<Anna appearance={this.state.appearance}></Anna>

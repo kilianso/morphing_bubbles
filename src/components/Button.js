@@ -4,7 +4,7 @@ import "./Button.scss";
 class Button extends Component {
 	render() {
 		return (
-			<button onClick={this.props.changer}>{this.props.appearance}</button>
+			<button onClick={this.props.changer} disabled={this.props.disabled}>{this.props.appearance}</button>
 		)
 	}
 }
