@@ -8,10 +8,10 @@ class Anna extends Component {
 		const blob1 = createBlob({
 		  element: document.querySelector("#yellow__path"),
 		  numPoints: 10,
-		  centerX: 480,
-		  centerY: 480,
-		  minRadius: 300,
-		  maxRadius: 350,
+		  centerX: 490,
+		  centerY: 490,
+		  minRadius: 500,
+		  maxRadius: 600,
 		  minDuration: 1,
 		  maxDuration: 2
 		});
@@ -21,8 +21,8 @@ class Anna extends Component {
 		  numPoints: 10,
 		  centerX: 500,
 		  centerY: 500,
-		  minRadius: 280,
-		  maxRadius: 350,
+		  minRadius: 490,
+		  maxRadius: 590,
 		  minDuration: 2,
 		  maxDuration: 3
 		});
@@ -30,10 +30,10 @@ class Anna extends Component {
 		const blob3 = createBlob({
 		  element: document.querySelector("#blue__path"),
 		  numPoints: 10,
-		  centerX: 520,
-		  centerY: 520,
-		  minRadius: 300,
-		  maxRadius: 350,
+		  centerX: 510,
+		  centerY: 510,
+		  minRadius: 500,
+		  maxRadius: 600,
 		  minDuration: 1.5,
 		  maxDuration: 2.5
 		});
@@ -125,6 +125,18 @@ class Anna extends Component {
 		  return min + (max - min) * Math.random();
 		}
 	}
+
+	// just testing if TweenMax is performing better than regular CSS class toggles
+	// .. it does not
+
+	// scale(){
+	// 	TweenMax.to('#Anna__SVG', 1, {
+	// 			ease: Sine.easeOut,
+	// 			scaleX: 2,
+	// 			scaleY: 2,
+	// 	});
+	// }
+
 	componentDidMount() {
 		this.animateSvg()
 	}
@@ -132,7 +144,8 @@ class Anna extends Component {
 	render() {
 		return (
 			<div className={"Anna " + this.props.appearance}>
-				<svg ref="Anna__SVG" className="Anna__SVG" width="100%" height="100%" viewBox="0 0 1000 1000" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
+				{/*<button onClick={this.scale}>scale</button>*/}
+				<svg ref="Anna__SVG" className="Anna__SVG" id="Anna__SVG" width="100%" height="100%" viewBox="0 0 1000 1000" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
 					<defs>
 		        // Yellow bubble
 						<g className="yellow__bubble">

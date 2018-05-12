@@ -10,9 +10,26 @@ $animation_3_loop: 13.5s ease-in-out 1.11s alternate infinite;
 	top: 50%;
 	transform: translateY(-50%);
 	transition: all 0.5s cubic-bezier(0.645, 0.045, 0.355, 1);
-
-	&.splash {
-		transform: translateY(-50%) scale3d(2,2,1);
+	&.full{
+		background: yellow;
+	}
+}
+.Anna__SVG {
+	transition: transform 0.5s cubic-bezier(0.645, 0.045, 0.355, 1);
+	overflow: visible;
+	path{
+		transition: all 0.5s cubic-bezier(0.645, 0.045, 0.355, 1);
+		transition-property: opacity, visibility;
+	}
+	.center &{
+		transform: scale3d(0.5,0.5,1);
+	}
+	.full & {
+		transform: scale3d(1.7,1.7,1);
+		#red__path, #blue__path{
+			opacity: 0;
+			visibility: hidden;
+		}
 	}
 }
 

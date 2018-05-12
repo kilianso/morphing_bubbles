@@ -21,8 +21,8 @@ class App extends Component {
 
   render() {
 		const appearance = [
-			{name:'center', disabled: false},
 			{name:'splash', disabled: false},
+			{name:'center', disabled: false},
 			{name:'full', disabled: false},
 			{name: 'passive', disabled: true},
 			{name:'notify', disabled: true},
