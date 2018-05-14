@@ -1,0 +1,24 @@
+@import '_base.scss';
+
+.primaryCta{
+	font-size: $baseFs;
+	outline: none;
+	position: absolute;
+	z-index: 1;
+	bottom: 10%;
+	left: 50%;
+	background: white;
+	padding: 1rem 5rem;
+	border: none;
+	border-radius: 5rem;
+	transition: all $animationDuration $animationEffect;
+	transform: translate3d(-50%, 50%, 0);
+	opacity: 0;
+	visibility: hidden;
+	cursor: pointer;
+	&.show {
+		transform: translate3d(-50%, 0, 0);
+		opacity: 1;
+		visibility: visible;
+	}
+}

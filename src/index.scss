@@ -1,6 +1,4 @@
-$animation:    cubic-bezier(0.4, 0.01, 0.165, 0.99);
-$font:         'Helvetica', sans-serif;
-$background:   #E1E1E1;
+@import 'components/_base.scss';
 
 * {
   box-sizing: border-box;
@@ -9,5 +7,6 @@ body {
     margin: 0;
     padding: 0;
     font-family: $font;
+    font-size: 14px;
     background: $background;
 }
