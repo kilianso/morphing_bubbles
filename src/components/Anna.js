@@ -143,8 +143,7 @@ class Anna extends Component {
 
 	render() {
 		return (
-			<div className={"Anna " + this.props.appearance}>
-				{/*<button onClick={this.scale}>scale</button>*/}
+			<div className={"Anna " + this.props.appearance + " " + this.props.currentStep}>
 				<svg ref="Anna__SVG" className="Anna__SVG" id="Anna__SVG" width="100%" height="100%" viewBox="0 0 1000 1000" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
 					<defs>
 		        // Yellow bubble
@@ -153,7 +152,7 @@ class Anna extends Component {
 			        <filter x="-18.9%" y="-10.4%" width="137.8%" height="141.5%" filterUnits="objectBoundingBox" id="yellow__filter">
 			          <feOffset dx={0} dy={20} in="SourceAlpha" result="shadowOffsetOuter1" />
 			          <feGaussianBlur stdDeviation={10} in="shadowOffsetOuter1" result="shadowBlurOuter1" />
-			          <feColorMatrix values="0 0 0 0 1   0 0 0 0 0.8   0 0 0 0 0  0 0 0 0.25 0" type="matrix" in="shadowBlurOuter1" />
+			          <feColorMatrix values={this.props.feColorMatrix} type="matrix" in="shadowBlurOuter1" />
 			        </filter>
 						</g>
 		        // Red bubble

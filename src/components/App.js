@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Button from "./Button";
+import Cta from "./Cta";
 // import Panel from "./Panel";
 import Anna from './Anna';
 import './App.scss';
@@ -8,9 +9,24 @@ class App extends Component {
 	constructor(props){
 		super(props);
 		this.state = {
-			appearance: 'center'
+			appearance: 'full',
+			steps: 4,
+			currentStep: 0,
 		}
 		this.changeAppearance = this.changeAppearance.bind(this);
+		this.changeStep = this.changeStep.bind(this);
+	}
+
+	changeStep(value) {
+		if (this.state.currentStep === 3) {
+			this.setState({
+				currentStep: 0
+			})
+		}else{
+			this.setState({
+				currentStep: this.state.currentStep + 1
+			})
+		}
 	}
 
 	changeAppearance(value) {
@@ -19,23 +35,32 @@ class App extends Component {
 		})
 	}
 
+	colorMatrix = [
+		{name: 'yellow', feColorMatrix: '0 0 0 0 1   0 0 0 0 0.8   0 0 0 0 0  0 0 0 0.25 0'},
+		{name: 'red', feColorMatrix: '0 0 0 0 0.894117647   0 0 0 0 0.0352941176   0 0 0 0 0.392156863  0 0 0 0.25 0'},
+		{name: 'blue', feColorMatrix: '0 0 0 0 0.423529412   0 0 0 0 0.796078431   0 0 0 0 0.874509804  0 0 0 0.25 0'},
+		{name: 'green', feColorMatrix: '0 0 0 0 0.176470588   0 0 0 0 0.733333333   0 0 0 0 0.560784314  0 0 0 0.25 0'},
+	]
+
+	appearance = [
+		{name:'splash', disabled: false},
+		{name:'center', disabled: false},
+		{name:'full', disabled: false},
+		{name: 'passive', disabled: true},
+		{name:'notify', disabled: true},
+		{name: 'embed', disabled: true},
+	];
+
   render() {
-		const appearance = [
-			{name:'splash', disabled: false},
-			{name:'center', disabled: false},
-			{name:'full', disabled: false},
-			{name: 'passive', disabled: true},
-			{name:'notify', disabled: true},
-			{name: 'embed', disabled: true}
-		];
     return (
       <div className="App">
 				<div className="Button__group">
-					{appearance.map(x=>
-						<Button key={x.name} appearance={x.name} disabled={x.disabled} changer={(e) => this.changeAppearance(x.name, e)}></Button>
+					{this.appearance.map(x=>
+						<Button key={x.name} appearance={x.name} disabled={x.disabled} changeAppearance={(e) => this.changeAppearance(x.name, e)}></Button>
 					)}
 				</div>
-				<Anna appearance={this.state.appearance}></Anna>
+				<Cta ref='primaryCta' cssClass={`primaryCta ${this.state.appearance === 'full' ? 'show' : ''}`} btnText='weiter' changeStep={(e) => this.changeStep()}></Cta>
+				<Anna appearance={this.state.appearance} currentStep={`step_${this.state.currentStep}`} feColorMatrix={this.colorMatrix[this.state.currentStep].feColorMatrix}></Anna>
         {
 				// 	<div className="App-header">
         //   <h2 className="App-heading">Welcome to React!!!</h2>

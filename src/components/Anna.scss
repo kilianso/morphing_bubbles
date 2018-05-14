@@ -1,25 +1,47 @@
-// avoid numbers that can be equal at some point of the infinite loop
-$animation_1_loop: 11.2s ease-in-out 0s alternate infinite;
-$animation_2_loop: 12.3s ease-in-out .57s alternate infinite;
-$animation_3_loop: 13.5s ease-in-out 1.11s alternate infinite;
+@import '_base.scss';
 
 .Anna {
 	position: absolute;
 	width: 100%;
 	height: 100%;
 	top: 50%;
+	transition: all 0.2s $animationEffect;
 	transform: translateY(-50%);
-	&.full{
-		background: yellow;
+	&.full {
+		// longer transitions in this state
+		transition: all 0.5s $animationEffect;
+		.bubbles__yellow use{
+			transition: all 0.5s $animationEffect;
+		}
+		&.step_0{
+			background: adjust_color($pf_yellow, $hue: 10deg);
+			.bubbles__yellow use{
+				fill: $pf_yellow;
+			}
+		}
+		&.step_1{
+			background: adjust_color($pf_red, $hue: 10deg, $lightness: 20%);
+			.bubbles__yellow use{
+				fill: $pf_red;
+			}
+		}
+		&.step_2{
+			background: adjust_color($pf_blue, $hue: 10deg, $lightness: 10%);
+			.bubbles__yellow use{
+				fill: $pf_blue;
+			}
+		}
+		&.step_3{
+			background: adjust_color($pf_green, $hue: 10deg, $lightness: 10%);
+			.bubbles__yellow use{
+				fill: $pf_green;
+			}
+		}
 	}
 }
 .Anna__SVG {
-	transition: transform 0.5s cubic-bezier(0.645, 0.045, 0.355, 1);
+	transition: all 0.5s $animationEffect;
 	overflow: visible;
-	.bubbles__red,.bubbles__yellow{
-		// transition: all 0.5s cubic-bezier(0.645, 0.045, 0.355, 1);
-		// transition-property: opacity, visibility;
-	}
 	.center &{
 		transform: scale3d(0.5,0.5,1);
 	}
