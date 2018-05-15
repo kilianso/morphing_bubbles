@@ -43,6 +43,18 @@
 .Anna__SVG {
 	transition: all 0.5s $animationEffect;
 	overflow: visible;
+
+	#mask {
+		circle {
+			transition: all 0.5s $animationEffect;
+			r: 1000;
+		}
+		.passive &, .notify &, .embed & {
+			circle {
+    		r: 500;
+			}
+		}
+	}
 	.center &{
 		transform: scale3d(0.5,0.5,1);
 	}
@@ -51,6 +63,9 @@
 		.bubbles__red, .bubbles__blue{
 			visibility: hidden;
 		}
+	}
+	.passive & {
+		transform: translate3d(38%, 45%, 0) scale3d(0.125, 0.125, 1);
 	}
 }
 

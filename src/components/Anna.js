@@ -146,6 +146,12 @@ class Anna extends Component {
 			<div className={"Anna " + this.props.appearance + " " + this.props.currentStep}>
 				<svg ref="Anna__SVG" className="Anna__SVG" id="Anna__SVG" width="100%" height="100%" viewBox="0 0 1000 1000" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
 					<defs>
+						// Mask for passive state
+						<g className="clipMask">
+							<mask id="mask" fill="white">
+								<circle cx="50%" cy="30%" r="500" transform="rotate(45 500 300)"/>
+							</mask>
+						</g>
 		        // Yellow bubble
 						<g className="yellow__bubble">
 			        <path id="yellow__path" />
@@ -174,22 +180,22 @@ class Anna extends Component {
 			        </filter>
 						</g>
 		      </defs>
-					<g className="bubbles" fill="none" fillRule="evenodd">
+						<g className="bubbles" fill="none" fillRule="evenodd">
 						// NEVER CHANGE ORDER!
 						// Yellow Group
 						<g className="bubbles__yellow">
-							<use fill="#000" filter="url(#yellow__filter)" xlinkHref="#yellow__path" />
-							<use fill="#FC0" style={{mixBlendMode: 'multiply'}} xlinkHref="#yellow__path" />
+							<use fill="#000" filter="url(#yellow__filter)" xlinkHref="#yellow__path" mask="url(#mask)" />
+							<use fill="#FC0" style={{mixBlendMode: 'multiply'}} xlinkHref="#yellow__path" mask="url(#mask)"/>
 						</g>
 						// Red Group
 						<g className="bubbles__red">
-							<use fill="#000" filter="url(#red__filter)" xlinkHref="#red__path" />
-							<use fill="#E40964" style={{mixBlendMode: 'multiply'}} xlinkHref="#red__path" />
+							<use fill="#000" filter="url(#red__filter)" xlinkHref="#red__path" mask="url(#mask)"/>
+							<use fill="#E40964" style={{mixBlendMode: 'multiply'}} xlinkHref="#red__path" mask="url(#mask)"/>
 						</g>
 						// Blue Group
 						<g className="bubbles__blue">
-							<use fill="#000" style={{mixBlendMode: 'multiply'}} filter="url(#blue__filter)" xlinkHref="#blue__path" />
-							<use fill="#6CCBDF" style={{mixBlendMode: 'multiply'}} xlinkHref="#blue__path" />
+							<use fill="#000" style={{mixBlendMode: 'multiply'}} filter="url(#blue__filter)" xlinkHref="#blue__path" mask="url(#mask)"/>
+							<use fill="#6CCBDF" style={{mixBlendMode: 'multiply'}} xlinkHref="#blue__path" mask="url(#mask)"/>
 						</g>
 					</g>
 				</svg>

@@ -9,7 +9,7 @@ class App extends Component {
 	constructor(props){
 		super(props);
 		this.state = {
-			appearance: 'full',
+			appearance: 'center',
 			currentStep: 0
 		}
 		this.changeAppearance = this.changeAppearance.bind(this);
@@ -45,7 +45,7 @@ class App extends Component {
 		{name:'splash', disabled: false},
 		{name:'center', disabled: false},
 		{name:'full', disabled: false},
-		{name: 'passive', disabled: true},
+		{name: 'passive', disabled: false},
 		{name:'notify', disabled: true},
 		{name: 'embed', disabled: true},
 	];
