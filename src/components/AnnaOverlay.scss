@@ -1,0 +1,53 @@
+@import '_base.scss';
+
+.AnnaOverlay {
+	padding: 2rem;
+	color: $pf_white;
+	position: absolute;
+	bottom: 0;
+	z-index: 2;
+	transition: all $animationDuration $animationEffect;
+	opacity: 0;
+	visibility: hidden;
+	&.is--visible{
+		opacity: 1;
+		visibility: visible;
+	}
+}
+.AnnaOverlay__inner {
+	position: relative;
+	transition: all $animationDuration $animationEffect;
+	transform: translate3d(0, 50%,0);
+	opacity: 0;
+	visibility: hidden;
+	z-index: 1;
+	.is--visible &{
+		transform: translate3d(0, 0, 0);
+		opacity: 1;
+		visibility: visible;
+	}
+	.AnnaOverlay__content{
+		position: relative;
+		.AnnaOverlay__heading{
+			// will follow
+			color: rgba(0,0,0,0.3)
+		}
+		.AnnaOverlay__children{
+			// will follow
+		}
+	}
+}
+.AnnaOverlay__background {
+	box-shadow: $pf_blue 0 0 1.5rem;
+	background: $pf_dark_blue;
+	width: 1000px;
+	height: 1000px;
+	border-radius: 100%;
+	position: absolute;
+	top: 0;
+	transition: transform $animationDuration $animationEffect;
+	transform: translate3d(100%, 100%, 0);
+	.is--visible & {
+		transform: translate3d(-20%, -20%, 0);
+	}
+}

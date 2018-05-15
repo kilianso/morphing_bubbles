@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
-import Button from "./Button";
-import Cta from "./Cta";
-// import Panel from "./Panel";
 import Anna from './Anna';
+import AnnaOverlay from "./AnnaOverlay";
+import StateButton from "./StateButton";
+import Cta from "./Cta";
+
+// import Panel from "./Panel";
+
 import './App.scss';
 
 class App extends Component {
@@ -10,13 +13,16 @@ class App extends Component {
 		super(props);
 		this.state = {
 			appearance: 'center',
-			currentStep: 0
+			currentStep: 0,
+			annaOverlay: false
 		}
 		this.changeAppearance = this.changeAppearance.bind(this);
 		this.changeStep = this.changeStep.bind(this);
+		this.changeOverlay = this.changeOverlay.bind(this);
 	}
 
 	changeStep(value) {
+		alert(value)
 		if (this.state.currentStep === 3) {
 			this.setState({
 				currentStep: 0
@@ -32,6 +38,18 @@ class App extends Component {
 		this.setState({
 			appearance: value
 		})
+	}
+
+	changeOverlay(value) {
+		if (['passive', 'notify', 'embed'].indexOf(value) >= 0) {
+			this.setState({
+				annaOverlay: (this.state.annaOverlay === false ? true : false)
+			})
+		}else{
+			this.setState({
+				annaOverlay: false
+			})
+		}
 	}
 
 	colorMatrix = [
@@ -53,32 +71,19 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-				<div className="Button__group">
+				<div className="StateButton__group">
 					{this.appearance.map(x=>
-						<Button key={x.name} appearance={x.name} disabled={x.disabled} changeAppearance={(e) => this.changeAppearance(x.name, e)}></Button>
+						<StateButton key={x.name} appearance={x.name} disabled={x.disabled} changeAppearance={(e) => this.changeAppearance(x.name, e)}></StateButton>
 					)}
 				</div>
-				<Cta ref='primaryCta' cssClass={`primaryCta ${this.state.appearance === 'full' ? 'show' : ''}`} btnText='weiter' changeStep={(e) => this.changeStep()}></Cta>
-				<Anna appearance={this.state.appearance} currentStep={`step_${this.state.currentStep}`} feColorMatrix={this.colorMatrix[this.state.currentStep].feColorMatrix}></Anna>
-        {
-				// 	<div className="App-header">
-        //   <h2 className="App-heading">Welcome to React!!!</h2>
-        //   <Button label="Klick mich!"></Button>
-        // </div>
-				//  Important note, this is not HTML.
-				// 	So the attributes you set here are used as props to render the component.
-				// 	That means "title" is not like a title-attribute in HMTL and can be placed/rendered out into another element.
-				//
-				// <button onClick={this.changeName}>Verändere den Namen</button>
-				// <h2> Hallo {this.state.name}</h2>
-				// <p>{this.state.name.length}</p>
-				// <button onClick={this.changeCounter}>Count up</button>
-				// <p>Aktueller counter: {this.state.counter}</p>
-				// <Panel heading="first titel" content="this is the first content"></Panel>
-				// <Panel heading="second titel">
-				// 	<Button label="Ich bin ein props.children"></Button>
-				// </Panel>
-				}
+				<Anna changeOverlay={(e) => this.changeOverlay(this.state.appearance, e)} appearance={this.state.appearance} currentStep={`step_${this.state.currentStep}`} feColorMatrix={this.colorMatrix[this.state.currentStep].feColorMatrix}></Anna>
+				{/* No conditional output for now. Can't animate fly-in of the button when it's not there already*/}
+				<Cta cssClass={`cta primary full__cta ${this.state.appearance === 'full' ? 'is--visible' : ''} ${this.state.currentStep === 0 ? 'step_0' : ''}`} btnText='weiter' changeStep={() => this.changeStep()}></Cta>
+				<AnnaOverlay cssClass={this.state.annaOverlay ? 'is--visible' : ''} heading="Anna" content="Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor ut et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.">
+					<Cta cssClass="cta primary annaOverlay__cta" btnText='Primary call to action'></Cta>
+					<Cta cssClass="cta teritary annaOverlay__cta" btnText='Teritary call to action'></Cta>
+					<Cta cssClass="cta teritary annaOverlay__cta" btnText='Teritary call to action'></Cta>
+				</AnnaOverlay>
       </div>
 
     );
