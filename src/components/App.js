@@ -21,8 +21,7 @@ class App extends Component {
 		this.changeOverlay = this.changeOverlay.bind(this);
 	}
 
-	changeStep(value) {
-		alert(value)
+	changeStep() {
 		if (this.state.currentStep === 3) {
 			this.setState({
 				currentStep: 0
@@ -61,8 +60,8 @@ class App extends Component {
 
 	appearance = [
 		{name:'splash', disabled: false},
-		{name:'center', disabled: false},
 		{name:'full', disabled: false},
+		{name:'center', disabled: false},
 		{name: 'passive', disabled: false},
 		{name:'notify', disabled: true},
 		{name: 'embed', disabled: true},
