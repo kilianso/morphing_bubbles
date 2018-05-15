@@ -144,7 +144,7 @@ class Anna extends Component {
 	render() {
 		return (
 			<div className={"Anna " + this.props.appearance + " " + this.props.currentStep}>
-				<svg ref="Anna__SVG" className="Anna__SVG" id="Anna__SVG" width="100%" height="100%" viewBox="0 0 1000 1000" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
+				<svg onClick={this.props.changeOverlay} ref="Anna__SVG" className="Anna__SVG" id="Anna__SVG" width="100%" height="100%" viewBox="0 0 1000 1000" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
 					<defs>
 						// Mask for passive state
 						<g className="clipMask">
@@ -198,6 +198,8 @@ class Anna extends Component {
 							<use fill="#6CCBDF" style={{mixBlendMode: 'multiply'}} xlinkHref="#blue__path" mask="url(#mask)"/>
 						</g>
 					</g>
+					// NEVER remove this circle!!! Eventlistener will not work without it
+					<circle cx="50%" cy="40%" r="50%" fill="rgba(0,0,0,0)"/>
 				</svg>
 			</div>
 		)
