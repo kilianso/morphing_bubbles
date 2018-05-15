@@ -10,8 +10,7 @@ class App extends Component {
 		super(props);
 		this.state = {
 			appearance: 'full',
-			steps: 4,
-			currentStep: 0,
+			currentStep: 0
 		}
 		this.changeAppearance = this.changeAppearance.bind(this);
 		this.changeStep = this.changeStep.bind(this);

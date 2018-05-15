@@ -5,10 +5,11 @@
 	width: 100%;
 	height: 100%;
 	top: 50%;
+	// short transition between states
 	transition: all 0.2s $animationEffect;
 	transform: translateY(-50%);
 	&.full {
-		// longer transitions in this state
+		// longer transitions between color changes in full state
 		transition: all 0.5s $animationEffect;
 		.bubbles__yellow use{
 			transition: all 0.5s $animationEffect;
