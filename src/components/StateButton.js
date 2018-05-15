@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
-import "./Button.scss";
+import "./StateButton.scss";
 
-class Button extends Component {
+class StateButton extends Component {
 	render() {
 		return (
 			<button onClick={this.props.changeAppearance} disabled={this.props.disabled}>{this.props.appearance}</button>
@@ -9,4 +9,4 @@ class Button extends Component {
 	}
 }
 
-export default Button;
+export default StateButton;
