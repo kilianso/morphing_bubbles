@@ -1,24 +1,49 @@
 @import '_base.scss';
 
-.primaryCta{
+.cta{
 	font-size: $baseFs;
 	outline: none;
-	position: absolute;
-	z-index: 1;
-	bottom: 10%;
-	left: 50%;
-	background: white;
-	padding: 1rem 5rem;
+	padding: 1rem 2rem;
+	min-width: 150px;
 	border: none;
 	border-radius: 5rem;
-	transition: all $animationDuration $animationEffect;
-	transform: translate3d(-50%, 50%, 0);
-	opacity: 0;
-	visibility: hidden;
+	display: block;
 	cursor: pointer;
-	&.show {
-		transform: translate3d(-50%, 0, 0);
-		opacity: 1;
-		visibility: visible;
+	&.full__cta{
+		position: absolute;
+		bottom: 10%;
+		left: 50%;
+		transition: all $animationDuration $animationEffect;
+		transform: translate3d(-50%, 50%, 0);
+		opacity: 0;
+		visibility: hidden;
+		&.is--visible {
+			transform: translate3d(-50%, 0, 0);
+			opacity: 1;
+			visibility: visible;
+		}
+	}
+	&.primary {
+		background: $pf_yellow;
+		margin: 1rem 0;
+		&.step_0{
+			background: $pf_white;
+		}
+		&.annaOverlay__cta {
+			background: $pf_white;
+			padding: 0.75rem 1.25rem;
+		}
+	}
+	&.secondary {
+		background: $pf_white;
+	}
+	&.teritary {
+		background: none;
+		margin: 0.25rem 0;
+		&.annaOverlay__cta {
+			background: rgba(0,0,0,0.15);
+			color: $pf_white;
+			padding: 0.75rem 1.25rem;
+		}
 	}
 }
