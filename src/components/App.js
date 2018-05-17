@@ -91,8 +91,8 @@ class App extends Component {
 						</AnnaOverlay>
 					: <AnnaOverlay cssClass={this.state.annaOverlay ? 'is--visible' : ''} heading="Anna" content="Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor ut et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.">
 							<Cta cssClass="cta primary annaOverlay__cta" btnText='Primary call to action'></Cta>
-							<Cta cssClass="cta teritary annaOverlay__cta" btnText='Teritary call to action'></Cta>
-							<Cta cssClass="cta teritary annaOverlay__cta" btnText='Teritary call to action'></Cta>
+							<Cta cssClass="cta teritary annaOverlay__cta" btnText='Teritiary call to action'></Cta>
+							<Cta cssClass="cta teritary annaOverlay__cta" btnText='Teritiary call to action'></Cta>
 						</AnnaOverlay>
 				}
       </div>

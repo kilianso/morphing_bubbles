@@ -8,12 +8,12 @@ class Anna extends Component {
 		const blob1 = createBlob({
 		  element: document.querySelector("#yellow__path"),
 		  numPoints: 10,
-		  centerX: 490,
-		  centerY: 490,
+		  centerX: 480,
+		  centerY: 480,
 		  minRadius: 500,
-		  maxRadius: 600,
-		  minDuration: 1,
-		  maxDuration: 2
+		  maxRadius: 650,
+		  minDuration: 2,
+		  maxDuration: 4
 		});
 		// eslint-disable-next-line
 		const blob2 = createBlob({
@@ -21,8 +21,8 @@ class Anna extends Component {
 		  numPoints: 10,
 		  centerX: 500,
 		  centerY: 500,
-		  minRadius: 490,
-		  maxRadius: 590,
+		  minRadius: 480,
+		  maxRadius: 620,
 		  minDuration: 2,
 		  maxDuration: 3
 		});
@@ -30,12 +30,12 @@ class Anna extends Component {
 		const blob3 = createBlob({
 		  element: document.querySelector("#blue__path"),
 		  numPoints: 10,
-		  centerX: 510,
-		  centerY: 510,
+		  centerX: 520,
+		  centerY: 520,
 		  minRadius: 500,
-		  maxRadius: 600,
+		  maxRadius: 650,
 		  minDuration: 1.5,
-		  maxDuration: 2.5
+		  maxDuration: 3.5
 		});
 
 		function createBlob(options) {
