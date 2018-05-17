@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './AnnaOverlay.scss';
+import './AnnaOverlays.scss';
 
 class AnnaOverlay extends Component {
 	render() {

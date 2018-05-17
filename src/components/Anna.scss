@@ -39,7 +39,7 @@
 			}
 		}
 	}
-	&.passive, &.notify, &.embed{
+	&.passive, &.notify, &.toast{
 		z-index: 3;
 	}
 	.Anna__notify.is--visible{
@@ -85,7 +85,7 @@
 			transition: all 0.5s $animationEffect;
 			r: 1000;
 		}
-		.passive &, .notify &, .embed & {
+		.passive &, .notify &, .toast & {
 			circle {
 				r: 500;
 			}

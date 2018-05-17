@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Anna from './Anna';
-import AnnaOverlay from "./AnnaOverlay";
+import AnnaOverlay from "./AnnaOverlays";
 import StateButton from "./StateButton";
 import Cta from "./Cta";
 
@@ -12,7 +12,7 @@ class App extends Component {
 	constructor(props){
 		super(props);
 		this.state = {
-			appearance: 'notify',
+			appearance: 'center',
 			currentStep: 0,
 			annaOverlay: false
 		}
@@ -35,12 +35,18 @@ class App extends Component {
 
 	changeAppearance(value) {
 		this.setState({
-			appearance: value
+			appearance: value,
+			annaOverlay: false
 		})
+		if(value === 'toast'){
+			this.setState({
+				annaOverlay: true
+			})
+		}
 	}
 
 	changeOverlay(value) {
-		if (['passive', 'notify', 'embed'].indexOf(value) >= 0) {
+		if (['passive', 'notify', 'toast'].indexOf(value) >= 0) {
 			this.setState({
 				annaOverlay: (this.state.annaOverlay === false ? true : false)
 			})
@@ -64,7 +70,7 @@ class App extends Component {
 		{name:'center', disabled: false},
 		{name: 'passive', disabled: false},
 		{name:'notify', disabled: false},
-		{name: 'embed', disabled: true},
+		{name: 'toast', disabled: false},
 	];
 
   render() {
@@ -78,11 +84,17 @@ class App extends Component {
 				<Anna changeOverlay={(e) => this.changeOverlay(this.state.appearance, e)} appearance={this.state.appearance} currentStep={`step_${this.state.currentStep}`} notify={this.state.appearance === 'notify' && !this.state.annaOverlay ? 'is--visible' : ''} close={this.state.annaOverlay ? 'is--visible' : ''} feColorMatrix={this.colorMatrix[this.state.currentStep].feColorMatrix}></Anna>
 				{/* No conditional output for now. Can't animate fly-in of the button when it's not there already*/}
 				<Cta cssClass={`cta primary full__cta ${this.state.appearance === 'full' ? 'is--visible' : ''} ${this.state.currentStep === 0 ? 'step_0' : ''}`} btnText='weiter' changeStep={() => this.changeStep()}></Cta>
-				<AnnaOverlay cssClass={this.state.annaOverlay ? 'is--visible' : ''} heading="Anna" content="Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor ut et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.">
-					<Cta cssClass="cta primary annaOverlay__cta" btnText='Primary call to action'></Cta>
-					<Cta cssClass="cta teritary annaOverlay__cta" btnText='Teritary call to action'></Cta>
-					<Cta cssClass="cta teritary annaOverlay__cta" btnText='Teritary call to action'></Cta>
-				</AnnaOverlay>
+				{this.state.appearance === 'toast'
+					?
+						<AnnaOverlay cssClass={this.state.annaOverlay ? 'is--visible is--toast' : ''} heading="" content="Lorem ipsum dolor sit amet, consectetur adipisicing elit.">
+							{/*<Cta cssClass="cta primary annaOverlay__cta" btnText='Primary call to action'></Cta> */}
+						</AnnaOverlay>
+					: <AnnaOverlay cssClass={this.state.annaOverlay ? 'is--visible' : ''} heading="Anna" content="Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor ut et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.">
+							<Cta cssClass="cta primary annaOverlay__cta" btnText='Primary call to action'></Cta>
+							<Cta cssClass="cta teritary annaOverlay__cta" btnText='Teritary call to action'></Cta>
+							<Cta cssClass="cta teritary annaOverlay__cta" btnText='Teritary call to action'></Cta>
+						</AnnaOverlay>
+				}
       </div>
 
     );
