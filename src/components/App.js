@@ -12,7 +12,7 @@ class App extends Component {
 	constructor(props){
 		super(props);
 		this.state = {
-			appearance: 'center',
+			appearance: 'notify',
 			currentStep: 0,
 			annaOverlay: false
 		}
@@ -63,7 +63,7 @@ class App extends Component {
 		{name:'full', disabled: false},
 		{name:'center', disabled: false},
 		{name: 'passive', disabled: false},
-		{name:'notify', disabled: true},
+		{name:'notify', disabled: false},
 		{name: 'embed', disabled: true},
 	];
 
@@ -75,7 +75,7 @@ class App extends Component {
 						<StateButton key={x.name} appearance={x.name} disabled={x.disabled} changeAppearance={(e) => this.changeAppearance(x.name, e)}></StateButton>
 					)}
 				</div>
-				<Anna changeOverlay={(e) => this.changeOverlay(this.state.appearance, e)} appearance={this.state.appearance} currentStep={`step_${this.state.currentStep}`} feColorMatrix={this.colorMatrix[this.state.currentStep].feColorMatrix}></Anna>
+				<Anna changeOverlay={(e) => this.changeOverlay(this.state.appearance, e)} appearance={this.state.appearance} currentStep={`step_${this.state.currentStep}`} notify={this.state.appearance === 'notify' && !this.state.annaOverlay ? 'is--visible' : ''} close={this.state.annaOverlay ? 'is--visible' : ''} feColorMatrix={this.colorMatrix[this.state.currentStep].feColorMatrix}></Anna>
 				{/* No conditional output for now. Can't animate fly-in of the button when it's not there already*/}
 				<Cta cssClass={`cta primary full__cta ${this.state.appearance === 'full' ? 'is--visible' : ''} ${this.state.currentStep === 0 ? 'step_0' : ''}`} btnText='weiter' changeStep={() => this.changeStep()}></Cta>
 				<AnnaOverlay cssClass={this.state.annaOverlay ? 'is--visible' : ''} heading="Anna" content="Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor ut et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.">

@@ -42,21 +42,31 @@
 	&.passive, &.notify, &.embed{
 		z-index: 3;
 	}
+	.Anna__notify.is--visible{
+		opacity: 1;
+		visibility: visible;
+		transform: scale3d(1,1,0);
+		.notify__outer {
+			transform-origin: inherit;
+			animation: pulsar 1s $animationEffect alternate infinite;
+		}
+	}
+	.Anna__close.is--visible{
+		opacity: 1;
+		visibility: visible;
+		transform: scale3d(1,1,0);
+	}
+	.Anna__notify, .Anna__close{
+		opacity: 0;
+		visibility: hidden;
+		transform: scale3d(0,0,0);
+		transform-origin: right top;
+		transition: all $animationDuration $animationEffect;
+	}
 }
 .Anna__SVG {
 	transition: all 0.5s $animationEffect;
 	overflow: visible;
-	#mask {
-		circle {
-			transition: all 0.5s $animationEffect;
-			r: 1000;
-		}
-		.passive &, .notify &, .embed & {
-			circle {
-    		r: 500;
-			}
-		}
-	}
 	.center &{
 		transform: scale3d(0.5,0.5,1);
 	}
@@ -66,21 +76,42 @@
 			visibility: hidden;
 		}
 	}
-	.passive & {
+	.passive &, .notify &, .toast & {
 		cursor: pointer;
 		transform: translate3d(38%, 45%, 0) scale3d(0.125, 0.125, 1);
 	}
+	#mask {
+		circle {
+			transition: all 0.5s $animationEffect;
+			r: 1000;
+		}
+		.passive &, .notify &, .embed & {
+			circle {
+				r: 500;
+			}
+		}
+	}
+	.yellow__bubble path, .red__bubble path {
+	  animation: rotateClockwise 90s infinite;
+		transform-origin: center center;
+	}
+	.blue__bubble path{
+	  animation: rotateCounterClockwise 90s infinite;
+		transform-origin: center center;
+	}
 }
 
-/*----------- ANIMATIONS ----------- */
+/*----------- KEYFRAME ANIMATIONS ----------- */
 
-.yellow__bubble path, .red__bubble path {
-  animation: rotateClockwise 90s infinite;
-	transform-origin: center center;
-}
-.blue__bubble path{
-  animation: rotateCounterClockwise 90s infinite;
-	transform-origin: center center;
+@keyframes pulsar{
+	0%{
+		transform: scale3d(0,0,0), translate(2%, -2%);
+		opacity: 1;
+	}
+	100%{
+		transform: scale3d(1.75,1.75,0) translate(2%, -2%);
+		opacity: 0;
+	}
 }
 
 @keyframes rotateClockwise{

@@ -198,7 +198,24 @@ class Anna extends Component {
 							<use fill="#6CCBDF" style={{mixBlendMode: 'multiply'}} xlinkHref="#blue__path" mask="url(#mask)"/>
 						</g>
 					</g>
-					// NEVER remove this circle!!! Eventlistener will not work without it
+
+					<g className={"Anna__notify " + this.props.notify}>>
+						<rect className="notify__outer" x={600} y={-300} width={700} height={700} rx="700" fill="none" stroke="rgba(255, 76, 115, 0.3)" strokeWidth="50"/>
+						<rect className="notify__inner" x={700} y={-200} width={500} height={500} rx="500" fill="#FF4C73"/>
+						<text className="notify__text" fontSize={280} fontFamily={'Helvetica, sans-serif'} fontWeight={400} fill="#FFFFFF">
+							<tspan x={870} y={150}>1</tspan>
+						</text>
+					</g>
+
+					<g className={"Anna__close " + this.props.close}>
+						<rect className="close__inner" x={700} y={-200} width={500} height={500} rx={500} fill="#FFFFFF"/>
+						<g transform="translate(890, -5)">
+							<line x1="0" y1="0" x2="130" y2="130" style={{'stroke':'rgb(0,0,0)', 'strokeWidth':35, 'strokeLinecap':'round'}} />
+							<line x1="130" y1="0" x2="0" y2="130" style={{'stroke':'rgb(0,0,0)', 'strokeWidth':35, 'strokeLinecap':'round'}} />
+						</g>
+					</g>
+
+					// NEVER remove this circle below!!! Eventlistener will not work without it because other paths get drawed.
 					<circle cx="50%" cy="40%" r="50%" fill="rgba(0,0,0,0)"/>
 				</svg>
 			</div>
